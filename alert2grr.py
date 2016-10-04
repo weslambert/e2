@@ -33,9 +33,7 @@ with open("pass.txt") as file:
 	firstline = file.readline().strip()
 	username = readline()
 	for line in islice(file,0,1):
-		print firstline
 		password = line.strip()
-		print password
 
 grr = 'https://grr-server.com'
 
