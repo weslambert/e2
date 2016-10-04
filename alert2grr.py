@@ -8,26 +8,26 @@ logging.basicConfig(filename-'/var/log/grr.log' ,level=logging.DEBUG)
 ## Get SRC/DST IP
 ##############################
 
-ip _array = []
+ip_array = []
 
-db = MySQLdb.connect(host="localhost"
-					user="sguil"
-					passwd="password"
+db = MySQLdb.connect(host="localhost",
+					user="sguil",
+					passwd="password",
 					db="securityonion_db")
-cur. = db.cursor()
+cur = db.cursor()
 
-cur.execute("select * from event where status = '0' and priority = "1" and event.timestamp<curdate() and event.timestamp>DATE_ADD(CURDATE(), INTERVAL -1 MINUTE);")
+cur.execute("select * from event where status = '0' and priority = '1' and event.timestamp<curdate() and event.timestamp>DATE_ADD(CURDATE(), INTERVAL -1 MINUTE);")
 
 for row in cur.fetchall():
 	sig_msg = row[2]
 	date = row[6]
-	src_ip = socket.inet_ntoa(struct.pack('!L',row[13])
-	dst_ip = socket.inet_ntoa(struct.pack('!L',row[14])
+	src_ip = socket.inet_ntoa(struct.pack('!L',row[13]))
+	dst_ip = socket.inet_ntoa(struct.pack('!L',row[14]))
 	db.close()
 	ip_array.append(src_ip)
 	ip_array.append(dst_ip)
-	logging.info('Source IP address set to ' + src_ip + '.')
-	logging.info('Destination IP address set to ' + dst_ip + '.')
+	logging.info('Source IP address set to ' + src_ip + '.'')
+	logging.info('Destination IP address set to ' + dst_ip + '.'')
 	
 with open("pass.txt") as file:
 	firstline = file.readline().strip()
@@ -38,11 +38,11 @@ with open("pass.txt") as file:
 grr = 'https://grr-server.com'
 
 for i in ip_array:
-	logging.info('Attempting to find client URN for ' + i + '...''
+	logging.info('Attempting to find client URN for ' + i + '...')
 
 	index_response = requests.get(grr, auth=HTTPBasicAuth(username,password), verify=false)
 	csrf_token = index.response.cookies.get("csrftoken")
-	cookies = ( 'csrftoken': csrf_token)
+	cookies = { 'csrftoken': csrf_token }
 	
  data = {
 	"query": i,
