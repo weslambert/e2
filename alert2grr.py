@@ -100,7 +100,7 @@ for i in ip_array:
   }
  }
 
- new_flow_ep = grr + "/api/clients/" + urn + "flows"
+ new_flow_ep = grr + "/api/clients/" + urn + "/flows"
  
  response = requests.post(new_flow_ep,
          headers=headers, data=json.dumps(data),
