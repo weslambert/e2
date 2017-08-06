@@ -6,7 +6,7 @@ from requests.auth import HTTPBasicAuth
 import argparse
 import sys
 
-sys.stdout = open('/YOUR_LOG_DIRECTORY/grr-test.log', 'w')
+sys.stdout = open('/YOUR_LOG_DIRECTORY/elastalert2grr.log', 'w')
 
 parser = argparse.ArgumentParser(description='This script will query GRR for a client ID for the source and destination IP of machines found in an alert')
 parser.add_argument('-s','--source_ip', help='Input file name',required=True)
