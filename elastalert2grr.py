@@ -13,11 +13,11 @@ parser.add_argument('-s','--source_ip', help='Input file name',required=True)
 parser.add_argument('-d','--dest_ip',help='Output file name', required=False)
 args = parser.parse_args()
 
-grrserver = 'http://192.168.8.136:8000'
+grrserver = 'http://YOUR_SERVER_IP:8000'
 username = 'admin'
 password = 'demo'
 source_ip = args.source_ip 
-#clientid = 'C.2d55f7286080bf4c'
+#clientid = 'YOUR_CLIENT_ID'
 
 base64string = base64.encodestring('%s:%s' % (username, password)).replace('\n', '')
 authheader =  "Basic %s" % base64string
