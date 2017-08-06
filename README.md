@@ -1,6 +1,8 @@
 # alert2
 Some (not optimal, but useable) python scriptage to assist with information gathering (from Google [GRR](https://github.com/google/grr)) upon an alert match from Yelp's [Elastalert](https://github.com/Yelp/elastalert).
 
+`elastalert2grr.py` will query GRR for a relevant source or destination IP address, then gather the client URN and use that to automatically start a flow on said client.
+
 Most testing has been performed alongside [Technology Preview 3](http://blog.securityonion.net/2017/07/towards-elastic-on-security-onion.html) of [Security Onion](https://securityonion.net) on the [Elastic](https://www.elastic.co/) Stack.
 
 In such configuration, ElastAlert rules are stord in `/etc/elastalert/rules/`.
