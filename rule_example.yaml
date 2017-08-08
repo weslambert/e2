@@ -50,4 +50,4 @@ filter:
 #- "debug"
 alert:
  - "command"
-command: ["/YOUR_SCRIPT_DIRECTORY/elastalert2grr.py", "-s", "%(source_ip)s"]
+command: ["/YOUR_SCRIPT_DIRECTORY/elastalert2grr.py", "-i", "-s", "%(source_ip)s"]
