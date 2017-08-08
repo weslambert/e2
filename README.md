@@ -8,7 +8,7 @@ Some (not optimal, but useable) python scriptage to assist with information gath
 
 Most testing has been performed alongside [Technology Preview 3](http://blog.securityonion.net/2017/07/towards-elastic-on-security-onion.html) of [Security Onion](https://securityonion.net) on the [Elastic](https://www.elastic.co/) Stack.
 
-In such configuration, ElastAlert rules are stord in `/etc/elastalert/rules/`.
+In such configuration, ElastAlert rules are stored in `/etc/elastalert/rules/`.
 
 An example rule has been included in this repo that will query all indexes prefixed with `logstash-*` every minute for a user-supplied source IP address.  This example could also be modfied to match on destination address by modifying the following in `rule_example.yaml`.
 
