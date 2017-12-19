@@ -4,13 +4,11 @@ IN PROGRESS...
 
 Some (not optimal, but useable) python scriptage to assist with information gathering (from Google [GRR](https://github.com/google/grr)) upon an alert match from Yelp's [Elastalert](https://github.com/Yelp/elastalert).
 
-`elastalert2grr.py` will query GRR for a relevant source or destination IP address, then gather the client URN and use that to automatically start a flow on said client.
+`e2grr.py` will query [GRR](https://github.com/google/grr) for a relevant source or destination IP address, then gather the client URN and use that to automatically start a flow on said client.
 
-Most testing has been performed alongside [Technology Preview 3](http://blog.securityonion.net/2017/07/towards-elastic-on-security-onion.html) of [Security Onion](https://securityonion.net) on the [Elastic](https://www.elastic.co/) Stack.
+`e2hive_case.py` will create a case in [TheHive](https://github.com/CERT-BDF/TheHive), based on the `alert` and `message` field derived from matching alerts found through the use of an Elastalert rule file, `hive.yaml`.
 
-In such configuration, ElastAlert rules are stored in `/etc/elastalert/rules/`.
-
-An example rule has been included in this repo that will query all indexes prefixed with `logstash-*` every minute for a user-supplied source IP address.  This example could also be modfied to match on destination address by modifying the following in `rule_example.yaml`.
+An example rule (for GRR) has been included in this repo that will query all indexes prefixed with `logstash-*` every minute for a user-supplied source IP address.  This example could also be modfied to match on destination address by modifying the following in `rule_example.yaml`.
 
     filter:
     - term:
@@ -22,7 +20,7 @@ and
     - "command"
     command: ["/YOUR_SCRIPT_DIRECTORY/elastalert2grr.py", "-s", "%(source_ip)s"]
 
-You will also need to modify `elastalert2grr.py` to use the address and user/pass of a user able to authenticate to GRR.
+You will also need to modify `e2grr.py` to use the address and user/pass of a user able to authenticate to GRR.
 
 Be default, configuration is as follows (based off of [officical GRR Docker Image](https://github.com/google/grr-doc/blob/master/docker.adoc)):
 
