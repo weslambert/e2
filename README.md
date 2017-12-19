@@ -1,7 +1,5 @@
 # alert2
 
-IN PROGRESS...
-
 Some (not optimal, but useable) python scriptage to assist with information gathering (from Google [GRR](https://github.com/google/grr)) upon an alert match from Yelp's [Elastalert](https://github.com/Yelp/elastalert).
 
 `e2grr.py` will query [GRR](https://github.com/google/grr) for a relevant source or destination IP address, then gather the client URN and use that to automatically start a flow on said client.
