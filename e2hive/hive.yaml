@@ -1,12 +1,10 @@
-# Alert when the rate of events exceeds a threshold
-
+# Alert when a single IDS event is seen within one minute
 es_host: elasticsearch
 es_port: 9200
 
-
 # (Required)
 # Rule name, must be unique
-name: New Logs Found!
+name: New IDS Alerts Found!
 
 # (Required)
 # Type of alert.
@@ -15,7 +13,7 @@ type: frequency
 
 # (Required)
 # Index to search, wildcard supported
-index: logstash-ids*
+index: "*:logstash-ids*"
 
 use_strftime_index: true
 
@@ -40,14 +38,13 @@ filter:
 - term:
     event_type: "snort"
 
-# (Required)
-# The alert is use when a match is found
-#alert:
-#- "email"
-#email:
-#- "root@localhost"
-#alert:
-#- "debug"
+# Run a command
 alert:
  - "command"
-command: ["/etc/elastalert/rules/e2hive_case.py", "-t", "%(alert)s", "-d", "%(message)s"]
+
+# We specify our custom python script that will create a case in TheHive.
+# -t refers to the title of the case -- in our case, this will be set equal to the alert text
+# -d refers to the description of the case -- this will be set equal to the event message
+# -s refers to the severity of the case -- this will be set equal to the number we specify here:
+# 1 = low severity, 2 = medium severity, and 3 = high severity
+command: ["/etc/elastalert/rules/e2hive_case.py", "-t", "%(alert)s", "-d", "%(message)s", "-s", "2"]

@@ -16,12 +16,14 @@ apikey = parser.get('config', 'apikey')
 sys.stdout = open('/tmp/e2hive.log', 'w')
 
 parser = argparse.ArgumentParser(description='Post a case to the Hive')
-parser.add_argument('-t','--title', help='Input file name',required=True)
-parser.add_argument('-d','--description',help='Output file name', required=False)
+parser.add_argument('-t','--title', help='Title',required=True)
+parser.add_argument('-d','--description',help='Description', required=True)
+parser.add_argument('-s','--severity',help='Severity', required=False)
 args = parser.parse_args()
 
 title = args.title
 description = args.description 
+severity = args.severity
 
 authheader =  "Bearer " + apikey
 headers = {
@@ -31,7 +33,8 @@ headers = {
 
 data = {
   "title": title,
-  "description": description
+  "description": description,
+  "severity": int(severity)
 }
 
 response = requests.post(url + "/api/case",
