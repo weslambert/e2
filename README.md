@@ -2,9 +2,18 @@
 
 A few simple Python scripts and rule files to assist with information gathering (from Google [GRR](https://github.com/google/grr)) and case creation for CERT-BDF's [TheHive](https://github.com/CERT-BDF/TheHive) upon an alert match from Yelp's [Elastalert](https://github.com/Yelp/elastalert).
 
-`e2grr.py` will query [GRR](https://github.com/google/grr) for a relevant source or destination IP address, then gather the client URN and use that to automatically start a flow on said client.
+`e2fir.py` will create a case in [FIR](https://github.com/certsocietegenerale/FIR), based on the `alert` and `message` field derived from matching alerts found through the use of an Elastalert rule file, `fir.yaml`.
 
 `e2hive_case.py` will create a case in [TheHive](https://github.com/CERT-BDF/TheHive), based on the `alert` and `message` field derived from matching alerts found through the use of an Elastalert rule file, `hive.yaml`.
+
+`misp.yaml` will allow you to use the existing [PyMISP](https://github.com/MISP/PyMISP) library and example scripts, and is currently setup to create an event using `create_events.py`.
+
+We need to specify the path for PyMISP in each MISP python file (adding at the top) to ensure that we can load the appropriate modules when Elastalert is executing the rule:
+
+    import sys
+    sys.path.append('/etc/elastalert/rules/PyMISP')
+
+`e2grr.py` will query [GRR](https://github.com/google/grr) for a relevant source or destination IP address, then gather the client URN and use that to automatically start a flow on said client.
 
 An example rule (for GRR) has been included in this repo that will query all indexes prefixed with `logstash-*` every minute for a user-supplied source IP address.  This example could also be modfied to match on destination address by modifying the following in `rule_example.yaml`.
 
