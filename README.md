@@ -1,6 +1,6 @@
 # alert2
 
-A few simple Python scripts and rule files to assist with information gathering and case creation for various open-source projects.
+A few simple Python scripts and [Elastalert](https://github.com/Yelp/elastalert) rule files to assist with information gathering and case creation for various open-source projects.
 
 `e2fir.py` will create a case in [FIR](https://github.com/certsocietegenerale/FIR), based on the `alert` and `message` field derived from matching alerts found through the use of an Elastalert rule file, `fir.yaml`.
 
