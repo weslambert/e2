@@ -12,4 +12,4 @@ The default path for `e2fir.conf` is set to `/etc/elastalert/rules/e2fir.conf`. 
 
 Options in `fir.yaml` can be modified to change the type of information for which we are searching and/or sending to FIR.
 
-Currently the rule file will search for any IDS event in Elasticseach (`event_type:snort`) for the last minute.  This is used for testing purposes and is not intended to be used in production.  You will likely want to specify more specific search criteria to ensure you are inserting data in to FIR that really matters.
+Currently, the rule file will search for any IDS event in Elasticseach (`event_type:snort`) for the last minute.  This is used for testing purposes and is not intended to be used in production.  You will likely want to specify more specific search criteria to ensure you are inserting data in to FIR that really matters.
