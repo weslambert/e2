@@ -1,6 +1,6 @@
 # e2misp
 
-`misp.yaml` will allow you to use the existing [PyMISP](https://github.com/MISP/PyMISP) library and example scripts, and is currently setup to create an event using `create_events.py`.
+`misp.yaml` will allow you to use the existing [PyMISP](https://github.com/MISP/PyMISP) library and example scripts, and is currently setup to create an event using `create_events.py` or any other script provided by the great folks at [The MISP Project](https://github.com/MISP).
 
 For Security Onion users, this rule file should be placed in `/etc/elastalert/rules/`
 
