@@ -1,6 +1,6 @@
 # alert2
 
-A few simple Python scripts and rule files to assist with information gathering (from Google [GRR](https://github.com/google/grr)) and case creation for CERT-BDF's [TheHive](https://github.com/CERT-BDF/TheHive) upon an alert match from Yelp's [Elastalert](https://github.com/Yelp/elastalert).
+A few simple Python scripts and rule files to assist with information gathering and case creation for various open-source projects.
 
 `e2fir.py` will create a case in [FIR](https://github.com/certsocietegenerale/FIR), based on the `alert` and `message` field derived from matching alerts found through the use of an Elastalert rule file, `fir.yaml`.
 
