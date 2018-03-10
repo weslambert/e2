@@ -15,7 +15,7 @@ type: frequency
 
 # (Required)
 # Index to search, wildcard supported
-index: logstash-*
+index: "*:logstash-*"
 
 use_strftime_index: true
 
