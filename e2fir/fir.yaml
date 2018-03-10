@@ -1,0 +1,52 @@
+# Alert when a single IDS event is seen within one minute
+es_host: elasticsearch
+es_port: 9200
+
+# (Required)
+# Rule name, must be unique
+name: New IDS - FIR Alerts Found!
+
+# (Required)
+# Type of alert.
+# the frequency rule type alerts when num_events events occur with timeframe time
+type: frequency
+
+# (Required)
+# Index to search, wildcard supported
+index: "*:logstash-ids*"
+
+use_strftime_index: true
+
+# (Required, frequency specific)
+# Alert when this many documents matching the query occur within a timeframe
+num_events: 1
+
+# (Required, frequency specific)
+# num_events must occur within this amount of time to trigger an alert
+timeframe:
+  minutes: 1
+
+# This option allows you to ignore repeating alerts for a period of time.
+#realert:
+#  minutes: 5
+
+# (Required)
+# A list of Elasticsearch filters used for find events
+# These filters are joined with AND and nested in a filtered query
+# For more info: http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl.html
+filter:
+- term:
+    event_type: "snort"
+
+# Run a command
+alert:
+ - "command"
+
+
+
+# We specify our custom python script that will create an event in FIR
+# -j refers to the subject of the event -- in our case, this will be set equal to the alert text
+# -d refers to the description of the event -- this will be set equal to the event message
+# -s refers to the severity of the case -- this will be set equal to the number we specify here:
+# 1 = low severity, 2 = medium severity, and 3 = high severity
+command: ["/etc/elastalert/rules/e2fir.py", "-j", "%(alert)s", "-d", "[%(gid)s:%(sid)s%(rev)s] %(alert)s [Classification: %(classification)s] [Priority: %(priority)s] %(interface)s  %(source_ip)s:%(source_port)s -> %(destination_ip)s:%(destination_port)s", "-s", "2", "-c", "3", "-l", "1", "-p", "8", "-t", "2", "-a", "3"]
