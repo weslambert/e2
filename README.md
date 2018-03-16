@@ -1,4 +1,4 @@
-# alert2
+# e2
 
 A few simple Python scripts and [Elastalert](https://github.com/Yelp/elastalert) rule files to assist with information gathering and case creation for various open-source projects.
 
