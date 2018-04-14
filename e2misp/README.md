@@ -6,6 +6,7 @@ For Security Onion users, this rule file should be placed in `/etc/elastalert/ru
 
 We can download/install the PyMISP library and examples scripts as follows:
 
+    sudo apt-get install python3-pip
     sudo pip3 install pymisp
     cd /etc/elastalert/rules
     git clone https://github.com/MISP/PyMISP.git && cd PyMISP
