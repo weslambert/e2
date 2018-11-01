@@ -29,7 +29,7 @@ and
 
 You will also need to modify `e2grr.py` to use the address and user/pass of a user able to authenticate to GRR.
 
-Be default, configuration is as follows (based off of [officical GRR Docker Image](https://github.com/google/grr-doc/blob/master/docker.adoc)):
+Be default, configuration is as follows (based off of [official GRR Docker Image](https://github.com/google/grr-doc/blob/master/docker.adoc)):
 
     grrserver = 'http://YOUR_SERVER_IP:8000'
     username = 'admin'
